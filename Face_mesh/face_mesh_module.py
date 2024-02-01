@@ -27,7 +27,7 @@ class FaceMesh():
                 for id,lm in enumerate(faceLms.landmark):
                     h, w, c = img.shape
                     x,y = int(lm.x * w), int(lm.y * h)
-                    cv2.putText(img, 'x', (x,y), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 255), 1)
+                    cv2.putText(img, 'x', (x,y), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 255), 3)
                     face.append([x,y])
                 faces.append(face)
         return img, faces
@@ -39,7 +39,7 @@ def main():
     cap = cv2.VideoCapture(0)
     current_time = 0
     prev_time = 0
-    detector = FaceMesh(maxFace = 2)
+    detector = FaceMesh(maxFaces = 2)
     while True:
         ret, img = cap.read()
         img, faces = detector.findFaceMesh(img)
